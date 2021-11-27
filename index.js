@@ -1,7 +1,14 @@
+const mongoose = require('mongoose');
+require('./config/db');
+
 const express = require('express');
 const { engine } = require('express-handlebars');
 const path = require('path');
 const router = require('./routes');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+require('dotenv').config({ path: 'variables.env' });
 
 const app = express();
 
@@ -22,6 +29,17 @@ app.set('view engine', 'hbs');
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Creamos una sesión para almacenar la conexión de Mongo y no tener que estar autenticándonos todo el tiempo
+app.use(
+  session({
+    secret: process.env.SECRETO,
+    key: process.env.KEY,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.DATABASE }),
+  })
+);
+
 app.use('/', router());
 
-app.listen(4000);
+app.listen(process.env.PUERTO);
