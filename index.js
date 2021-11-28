@@ -22,6 +22,8 @@ app.engine(
   engine({
     extname: '.hbs',
     defaultLayout: 'layout',
+    // Los helpers es una forma de registrar scripts para que se comuniquen directamente con handlebars antes de su salida
+    helpers: require('./helpers/handlebars'),
   })
 );
 app.set('view engine', 'hbs');

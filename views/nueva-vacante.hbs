@@ -40,5 +40,15 @@
       <trix-editor input='x'></trix-editor>
     </div>
 
+    <h3>Conocimientos</h3>
+    <ul class='lista-conocimientos'>
+      {{! Para que no de error fn is not defined, se pone cualquier cosa (el parámetro opciones) }}
+      {{#seleccionarSkills a}}{{/seleccionarSkills}}
+    </ul>
+
+    <div class='campo centrar-horizontal'>
+      <input type='submit' value='Publicar' class='btn btn-azul' />
+    </div>
+
   </form>
 </main>
