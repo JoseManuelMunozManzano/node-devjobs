@@ -4,12 +4,15 @@
   "description": "Portal DevJobs con NodeJS, Handlebars y Mongoose",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js"
+    "dev": "nodemon ./index.js",
+    "start": "concurrently \"npm run dev\" \"npm run watch\" ",
+    "watch": "webpack --watch --mode development"
   },
   "keywords": [],
   "author": "José Manuel Muñoz Manzano",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^6.4.0",
     "connect-mongo": "^4.6.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -19,5 +22,12 @@
     "nodemon": "^2.0.15",
     "shortid": "^2.2.16",
     "slug": "^5.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-loader": "^8.2.3",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.2.3"
   }
 }
