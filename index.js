@@ -12,6 +12,9 @@ require('dotenv').config({ path: 'variables.env' });
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // Habilitar handlebars como view
 // Para que funcione, se debe crear una carpeta llamada views y dentro otra llamada layouts
 // Como hemos indicado que el defaultLayout se llamará layout, dentro de la carpeta layouts habrá
